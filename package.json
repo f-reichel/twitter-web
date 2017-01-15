@@ -1,0 +1,26 @@
+{
+  "name": "twitter-web",
+  "version": "1.0.0",
+  "description": "web application that implements a behaviour similiar to twitter",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/f-reichel/twitter-web.git"
+  },
+  "author": "Filip Reichel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/f-reichel/twitter-web/issues"
+  },
+  "homepage": "https://github.com/f-reichel/twitter-web#readme",
+  "dependencies": {
+    "hapi": "^16.1.0"
+  }
+}
