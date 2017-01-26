@@ -1,25 +1,30 @@
 'use strict';
 
 exports.home = {
-
-  handler: (request, reply) => {
-    reply.file('./app/views/main.html');
+  
+  handler: function (request, reply) {
+    reply.view('home', { title: 'Write a message' });
   },
-
+  
 };
 
-exports.signup = {
-
-  handler: (request, reply) => {
-    reply.file('./app/views/signup.html');
+exports.report = {
+  
+  handler: function (request, reply) {
+    reply.view('report', {
+      title: 'Tweet history',
+      tweet: this.tweet,
+    });
   },
-
+  
 };
 
-exports.login = {
-
-  handler: (request, reply) => {
-    reply.file('./app/views/login.html');
+exports.write = {
+  
+  handler: function (request, reply) {
+    const data = request.payload;
+    this.tweet.push(data);
+    reply.redirect('/report');
   },
-
+  
 };

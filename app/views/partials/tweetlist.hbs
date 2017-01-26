@@ -1,0 +1,25 @@
+<section class="ui raised segment">
+  <div class="ui grid">
+    <aside class="six wide column">
+      <img src="images/twitter5.png" class="ui medium image">
+    </aside>
+    <article class="eight wide column">
+      <table class="ui celled table segment">
+        <thead>
+        <tr>
+          <th>User</th>
+          <th>Method</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each tweet}}
+          <tr>
+            <td> {{user}} </td>
+            <td> {{method}} </td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </article>
+  </div>
+</section>
