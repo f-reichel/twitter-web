@@ -22,7 +22,8 @@ exports.report = {
 exports.write = {
   
   handler: function (request, reply) {
-    const data = request.payload;
+    var data = request.payload;
+    data.sender = this.currentUser;
     this.tweet.push(data);
     reply.redirect('/report');
   },
