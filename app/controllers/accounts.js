@@ -1,7 +1,7 @@
 'use strict';
 
 exports.main = {
-  
+  auth: false,
   handler: function (request, reply) {
     reply.view('main', { title: 'Welcome to Twitter Node' });
   },
@@ -9,7 +9,7 @@ exports.main = {
 };
 
 exports.signup = {
-  
+  auth: false,
   handler: function (request, reply) {
     reply.view('signup', { title: 'Sign up for Twitter' });
   },
@@ -17,31 +17,24 @@ exports.signup = {
 };
 
 exports.login = {
-  
+  auth: false,
   handler: function (request, reply) {
     reply.view('login', { title: 'Login to Twitter' });
   },
   
 };
 
-exports.authenticate = {
-  
-  handler: function (request, reply) {
-    reply.redirect('/home');
-  },
-  
-};
-
 exports.logout = {
-  
+  auth: false,
   handler: function (request, reply) {
+    request.cookieAuth.clear();
     reply.redirect('/');
   },
   
 };
 
 exports.register = {
-
+  auth: false,
   handler: function (request, reply) {
     const user = request.payload;
     this.users[user.email] = user;
@@ -51,11 +44,14 @@ exports.register = {
 };
 
 exports.authenticate = {
-
+  auth: false,
   handler: function (request, reply) {
     const user = request.payload;
     if ((user.email in this.users) && (user.password === this.users[user.email].password)) {
-      this.currentUser = this.users[user.email];
+      request.cookieAuth.set({
+        loggedIn: true,
+        loggedInUser: user.email,
+      });
       reply.redirect('/home');
     } else {
       reply.redirect('/signup');
@@ -63,3 +59,4 @@ exports.authenticate = {
   },
 
 };
+

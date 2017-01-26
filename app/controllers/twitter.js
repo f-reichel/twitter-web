@@ -23,7 +23,8 @@ exports.write = {
   
   handler: function (request, reply) {
     var data = request.payload;
-    data.sender = this.currentUser;
+    var userEmail = request.auth.credentials.loggedInUser;
+    data.sender =  this.users[userEmail];
     this.tweet.push(data);
     reply.redirect('/report');
   },
