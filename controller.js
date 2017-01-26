@@ -1,7 +1,6 @@
-exports.index = {
+const Twitter = require('./app/controllers/twitter');
 
-  handler: function (request, reply) {
-    reply('Hello!');
-  },
+module.exports = [
+    { method: 'GET', path: '/', config: Twitter.home },
 
-};
+];
