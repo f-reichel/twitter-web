@@ -8,9 +8,9 @@
             <div class="text">Select User</div>
             <i class="ui dropdown icon"></i>
             <div class="menu">
-              <div class="item">Hans (123)</div>
-              <div class="item">Claudia (456)</div>
-              <div class="item">Werner (789)</div>
+              {{#each users}}
+                <div class="item">{{firstName}} {{lastName}}</div>
+              {{/each}}
             </div>
           </div>
           <div class="grouped inline fields">
@@ -24,7 +24,7 @@
         </form>
       </div>
     </div>
-    <aside class="six wide column">
+    <aside class="two wide column">
       <img src="images/twitter4.png" class="ui medium image">
     </aside>
   </div>
