@@ -3,8 +3,8 @@
     <div class="ui form six wide column">
       <div class="ui stacked segment">
         <form action="/tweet" method="POST">
-          <div class="ui dropdown" name="user">
-            <input type="hidden" name="user">
+          <div class="ui dropdown" name="receiver">
+            <input type="hidden" name="receiver">
             <div class="text">Select User</div>
             <i class="ui dropdown icon"></i>
             <div class="menu">
@@ -15,15 +15,8 @@
           </div>
           <div class="grouped inline fields">
             <div class="field">
-              <div class="ui radio checkbox">
-                <input type="radio" name="method" value="public">
-                <label>public</label>
-              </div>
-            </div>
-            <div class="field">
-              <div class="ui radio checkbox">
-                <input type="radio" name="method" value="private">
-                <label>private</label>
+              <div class="ui input">
+                <input type="text" name="content" placeholder="Enter your message here ...">
               </div>
             </div>
           </div>

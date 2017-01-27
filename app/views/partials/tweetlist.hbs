@@ -7,17 +7,19 @@
       <table class="ui celled table segment">
         <thead>
         <tr>
-          <th>User</th>
-          <th>Method</th>
-          <th>Sender</th>
+          <th>To</th>
+          <th>Message</th>
+          <th>From</th>
+          <th>Date</th>
         </tr>
         </thead>
         <tbody>
-        {{#each tweet}}
+        {{#each tweets}}
           <tr>
-            <td> {{user}} </td>
-            <td> {{method}} </td>
+            <td> {{receiver}} </td>
+            <td> {{content}} </td>
             <td> {{sender.firstName}} {{sender.lastName}} </td>
+            <td>{{formatDate createdAt "short"}}</td>
           </tr>
         {{/each}}
         </tbody>

@@ -1,15 +1,27 @@
 'use strict';
 
 const Hapi = require('hapi');
+var moment = require('moment-timezone');
+var hbs = require('handlebars');
+moment.tz.setDefault('Europe/Berlin');
+var DateFormats = {
+  short: 'DD MMMM - YYYY',
+  long: 'dddd DD.MM.YYYY HH:mm',
+};
+hbs.registerHelper('formatDate', function (datetime, format) {
+  if (moment) {
+    // can use other formats like 'lll' too
+    format = DateFormats[format] || format;
+    return moment(datetime).format(format);
+  } else {
+    return datetime;
+  }
+});
+
+require('./app/models/db');
 
 var server = new Hapi.Server();
 server.connection({ port: process.env.PORT || 4000 });
-
-server.bind({
-  // currentUser: {},
-  users: {},
-  tweet: [],
-});
 
 server.register([require('inert'), require('vision'), require('hapi-auth-cookie')], err => {
   if (err) {
@@ -18,7 +30,7 @@ server.register([require('inert'), require('vision'), require('hapi-auth-cookie'
   
   server.views({
     engines: {
-      hbs: require('handlebars'),
+      hbs: hbs,
     },
     relativeTo: __dirname,
     path: './app/views',
