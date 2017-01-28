@@ -3,14 +3,20 @@ const mongoose = require('mongoose');
 const tweetSchema = mongoose.Schema(
     {
       sender: {
-        firstName: String,
-        lastName: String,
-        email: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        
+        //        firstName: String,
+        //        lastName: String,
+        //        email: String,
       },
       receiver: {
-        firstName: String,
-        lastName: String,
-        email: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+  
+        //        firstName: String,
+        //        lastName: String,
+        //        email: String,
       },
       content: String,
     },

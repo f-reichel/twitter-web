@@ -21,7 +21,6 @@ exports.home = {
           );
         }
       });
-      console.log('del' + array);
       reply.view('home',
           { title: 'Write a message',
             users: array,
@@ -37,33 +36,30 @@ exports.write = {
     var data = request.payload;
     var userEmail = request.auth.credentials.loggedInUser;
     User.findOne({ email: userEmail }).then(foundUser1 => {
-      delete(foundUser1.password);
-      data.sender = foundUser1;
-      console.log(data);
-      User.findOne({ _id: data.receiver }).then(foundUser2 => {
-        delete(foundUser2.password);
-        data.receiver = foundUser2;
-        const tweet = new Tweet(data);
-        tweet.save().then(newTweet => {
+      const tweet = new Tweet(data);
+      tweet.sender = foundUser1.id;
+      tweet.receiver = data.receiver;
+      return tweet.save();
+    }).then(newTweet => {
           reply.redirect('/report');
         }).catch(err => {
           reply.redirect('/');
         });
-      }).catch(err => {
-      });
-    }).catch(err => {
-    });
   },
+  
 };
 
 exports.report = {
   handler: function (request, reply) {
-    Tweet.find({}).exec().then(allTweets => {
-      reply.view('report', {
-        title: 'Tweet History',
-        tweets: allTweets,
-      });
-    }).catch(err => {
+    Tweet.find({})
+        .populate('sender')
+        .populate('receiver')
+        .then(allTweets => {
+          reply.view('report', {
+            title: 'Tweet History',
+            tweets: allTweets,
+          });
+        }).catch(err => {
       reply.redirect('/');
     });
   },
