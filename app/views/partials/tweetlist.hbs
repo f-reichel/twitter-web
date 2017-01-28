@@ -16,10 +16,10 @@
         <tbody>
         {{#each tweets}}
           <tr>
-            <td> {{receiver}} </td>
+            <td> {{receiver.firstName}} {{receiver.lastName}} </td>
             <td> {{content}} </td>
             <td> {{sender.firstName}} {{sender.lastName}} </td>
-            <td>{{formatDate createdAt "short"}}</td>
+            <td>{{formatDate createdAt "list"}}</td>
           </tr>
         {{/each}}
         </tbody>

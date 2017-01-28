@@ -7,7 +7,11 @@ const tweetSchema = mongoose.Schema(
         lastName: String,
         email: String,
       },
-      receiver: String,
+      receiver: {
+        firstName: String,
+        lastName: String,
+        email: String,
+      },
       content: String,
     },
     {

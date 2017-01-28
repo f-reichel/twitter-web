@@ -7,6 +7,7 @@ moment.tz.setDefault('Europe/Berlin');
 var DateFormats = {
   short: 'DD MMMM - YYYY',
   long: 'dddd DD.MM.YYYY HH:mm',
+  list: 'DD.MM.YY HH:mm',
 };
 hbs.registerHelper('formatDate', function (datetime, format) {
   if (moment) {

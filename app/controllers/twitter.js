@@ -33,22 +33,27 @@ exports.write = {
   handler: function (request, reply) {
     var data = request.payload;
     var userEmail = request.auth.credentials.loggedInUser;
-    User.findOne({ email: userEmail }).then(foundUser => {
-      delete(foundUser.password);
-      data.sender = foundUser;
+    User.findOne({ email: userEmail }).then(foundUser1 => {
+      delete(foundUser1.password);
+      data.sender = foundUser1;
       console.log(data);
-      const tweet = new Tweet(data);
-      tweet.save().then(newTweet => {
-        reply.redirect('/report');
+      User.findOne({ _id: data.receiver }).then(foundUser2 => {
+        delete(foundUser2.password);
+        data.receiver = foundUser2;
+        const tweet = new Tweet(data);
+        tweet.save().then(newTweet => {
+          reply.redirect('/report');
+        }).catch(err => {
+          reply.redirect('/');
+        });
       }).catch(err => {
-        reply.redirect('/');
       });
+    }).catch(err => {
     });
   },
 };
 
 exports.report = {
-  
   handler: function (request, reply) {
     Tweet.find({}).exec().then(allTweets => {
       reply.view('report', {
@@ -61,3 +66,4 @@ exports.report = {
   },
   
 };
+
