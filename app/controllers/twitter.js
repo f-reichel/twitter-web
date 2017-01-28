@@ -6,17 +6,20 @@ const User = require('../models/user');
 exports.home = {
   
   handler: function (request, reply) {
+    var userEmail = request.auth.credentials.loggedInUser;
     User.find({}).then(users => {
       var array = [];
       users.forEach(user => {
-        array.push(
-            {
-              _id: user._id,
-              nickName: user.nickName,
-              firstName: user.firstName,
-              lastName: user.lastName,
-            }
-        );
+        if (user.email !== userEmail) {
+          array.push(
+              {
+                _id: user._id,
+                nickName: user.nickName,
+                firstName: user.firstName,
+                lastName: user.lastName,
+              }
+          );
+        }
       });
       console.log('del' + array);
       reply.view('home',
