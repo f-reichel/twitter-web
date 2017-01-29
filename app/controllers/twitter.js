@@ -2,6 +2,7 @@
 
 const Tweet = require('../models/tweet');
 const User = require('../models/user');
+const Joi = require('joi');
 
 exports.home = {
   
@@ -32,6 +33,28 @@ exports.home = {
 };
 
 exports.write = {
+  
+  validate: {
+    
+    payload: {
+      receiver: Joi.string().required(),
+      content: Joi.string().max(140).required(),
+    },
+    
+    options: {
+      abortEarly: false,
+    },
+    
+    failAction: function (request, reply, source, error) {
+      reply.view('home', {
+        title: 'Message Error',
+        user: request.payload,
+        errors: error.data.details,
+      }).code(400);
+    },
+    
+  },
+  
   handler: function (request, reply) {
     var data = request.payload;
     var userEmail = request.auth.credentials.loggedInUser;
