@@ -1,0 +1,89 @@
+{
+  "users": {
+    "_model": "User",
+    "homer": {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret"
+    },
+    "marge": {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret"
+    },
+    "bart": {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret"
+    },
+    "maggie": {
+      "firstName": "Maggie",
+      "lastName": "Simpson",
+      "email": "maggie@simpson.com",
+      "password": "secret"
+    },
+    "grandpa": {
+      "firstName": "Grandpa",
+      "lastName": "Simpson",
+      "email": "grandpa@simpson.com",
+      "password": "secret"
+    }
+  },
+  "tweets": {
+    "_model": "Tweet",
+    "one": {
+      "sender": "->users.bart",
+      "receiver": "->users.homer",
+      "content": "Hey Dad, can you lend me some money?"
+    },
+    "two": {
+      "sender": "->users.bart",
+      "receiver": "->users.marge",
+      "content": "Hey Mum, I will be late this evening. Don't worry!"
+    },
+    "three": {
+      "sender": "->users.bart",
+      "receiver": "->users.maggie",
+      "content": "I found your teddy bear in my room."
+    },
+    "four": {
+      "sender": "->users.bart",
+      "receiver": "->users.grandpa",
+      "content": "Mum said you mustn't go out when it's dark outside!"
+    },
+    "five": {
+      "sender": "->users.marge",
+      "receiver": "->users.homer",
+      "content": "Can you bring some milk from the supermarket? Thank you!"
+    },
+    "six": {
+      "sender": "->users.marge",
+      "receiver": "->users.bart",
+      "content": "Please do not forget to take the dog to the doctor!"
+    },
+    "seven": {
+      "sender": "->users.marge",
+      "receiver": "->users.maggie",
+      "content": "What do you want for lunch?"
+    },
+    "eight": {
+      "sender": "->users.homer",
+      "receiver": "->users.grandpa",
+      "content": "Do you want to watch the football match tonight?"
+    },
+    "nine": {
+      "sender": "->users.homer",
+      "receiver": "->users.marge",
+      "content": "I love you darling!"
+    },
+    "ten": {
+      "sender": "->users.grandpa",
+      "receiver": "->users.homer",
+      "content": "Yes sure, let's meet at Moe's!"
+    }
+  }
+}
+
