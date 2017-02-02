@@ -34,7 +34,9 @@ exports.home = {
             users: array,
             admin: admin,
           });
-    }).catch();
+    }).catch(err => {
+          reply.redirect('/');
+        });
     
   },
   
@@ -144,7 +146,9 @@ exports.report = {
           }).catch(err => {
         reply.redirect('/');
       });
-    }).catch();
+    }).catch(err => {
+      reply.redirect('/');
+    });
   },
   
 };
@@ -176,7 +180,9 @@ exports.delete = {
       } else {
         reply.redirect('/report');
       }
-    }).catch();
+    }).catch(err => {
+      reply.redirect('/');
+    });
   },
   
 };
@@ -203,7 +209,9 @@ exports.admin = {
             title: 'Manage users',
             users: array,
           });
-    }).catch();
+    }).catch(err => {
+      reply.redirect('/');
+    });
   },
   
 };
@@ -217,15 +225,21 @@ exports.admindelete = {
       Tweet.remove({ sender: userID })
           .then(res => {
             reply.redirect('/report');
-          }).catch();
+          }).catch(err => {
+        reply.redirect('/');
+      });
     } else if (data.delete === 'deleteUser') {
       Tweet.remove({ sender: userID })
           .then(res => {
             User.remove({ _id: userID })
                 .then(res => {
                   reply.redirect('/report');
-                }).catch();
-          }).catch();
+                }).catch(err => {
+              reply.redirect('/');
+            });
+          }).catch(err => {
+        reply.redirect('/');
+      });
     }
             
   },

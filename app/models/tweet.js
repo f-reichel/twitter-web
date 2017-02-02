@@ -5,18 +5,10 @@ const tweetSchema = mongoose.Schema(
       sender: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        
-        //        firstName: String,
-        //        lastName: String,
-        //        email: String,
       },
       receiver: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-  
-        //        firstName: String,
-        //        lastName: String,
-        //        email: String,
       },
       content: String,
     },

@@ -107,7 +107,7 @@ exports.authenticate = {
     
         reply.redirect('/home');
       } else {
-        reply.redirect('/signup');
+        reply.redirect('/signup').code(400);
       }
     });
   },
