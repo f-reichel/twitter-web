@@ -159,7 +159,10 @@ exports.updateSettings = {
     User.findOne({ email: loggedInUserEmail }).then(user => {
       user.firstName = editedUser.firstName;
       user.lastName = editedUser.lastName;
-      user.email = editedUser.email;
+      if (user.email !== 'admin@simpson.com') {
+        user.email = editedUser.email;
+      }
+      
       user.password = editedUser.password;
       return user.save();
     }).then(user => {

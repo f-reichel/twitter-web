@@ -1,6 +1,13 @@
 {
   "users": {
     "_model": "User",
+    "admin": {
+      "firstName": "Admin",
+      "lastName": "Admin",
+      "email": "admin@simpson.com",
+      "administrator": true,
+      "password": "secret"
+    },
     "homer": {
       "firstName": "Homer",
       "lastName": "Simpson",
@@ -83,6 +90,16 @@
       "sender": "->users.grandpa",
       "receiver": "->users.homer",
       "content": "Yes sure, let's meet at Moe's!"
+    },
+    "eleven": {
+      "sender": "->users.grandpa",
+      "receiver": "->users.homer",
+      "content": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et ma"
+    },
+    "twelve": {
+      "sender": "->users.maggie",
+      "receiver": "->users.marge",
+      "content": "I'm hungry. Can I have something to eat?"
     }
   }
 }

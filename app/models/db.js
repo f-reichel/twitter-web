@@ -20,8 +20,8 @@ mongoose.connection.on('connected', function () {
     const Tweet = require('./tweet');
     const User = require('./user');
     seeder.seed(data, { dropDatabase: false, dropCollections: true }).then(dbData => {
-      console.log('preloading Test Data');
-      console.log(dbData);
+      // console.log('preloading Test Data');
+      // console.log(dbData);
     }).catch(err => {
       console.log(error);
     });

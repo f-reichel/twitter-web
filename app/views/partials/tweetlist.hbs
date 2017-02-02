@@ -1,29 +1,76 @@
 <section class="ui raised segment">
-  <div class="ui grid">
-    <aside class="six wide column">
-      <img src="images/twitter5.png" class="ui medium image">
-    </aside>
-    <article class="eight wide column">
-      <table class="ui celled table segment">
-        <thead>
-        <tr>
-          <th>To</th>
-          <th>Message</th>
-          <th>From</th>
-          <th>Date</th>
-        </tr>
-        </thead>
-        <tbody>
-        {{#each tweets}}
-          <tr>
-            <td> {{receiver.firstName}} {{receiver.lastName}} </td>
-            <td> {{content}} </td>
-            <td> {{sender.firstName}} {{sender.lastName}} </td>
-            <td>{{formatDate createdAt "list"}}</td>
-          </tr>
-        {{/each}}
-        </tbody>
-      </table>
-    </article>
+  <div class="ui container">
+    <div class="ui grid">
+      <aside class="two wide column">
+        <img src="images/twitter5.png" class="ui medium image">
+      </aside>
+      <article class="fourteen wide column">
+        <form action="/report" method="POST">
+          <div class="ui dropdown" name="filter">
+            <input type="hidden" name="filter">
+            <div class="text">Select User</div>
+            <i class="ui dropdown icon"></i>
+            <div class="menu">
+              <div class="item" data-value="own">My Tweets</div>
+              <div class="item" data-value="all">All Tweets</div>
+              <div class="ui divider"></div>
+              {{#each users}}
+                <div class="item" data-value={{_id}}>{{firstName}} {{lastName}}</div>
+              {{/each}}
+            </div>
+            <button class="ui green submit button">Show</button>
+          </div>
+        </form>
+        {{> formerror }}
+        <form action="/delete" method="POST">
+          <table class="ui celled compact definition table">
+            <thead class="full-width">
+            <tr>
+            <th></th>
+            <th>To</th>
+            <th>Message</th>
+            <th>From</th>
+            <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each tweets}}
+              <tr>
+                <td class="collapsing">
+                  <div class="ui radio checkbox">
+                    <input name="radio" checked="checked" type="radio" value="{{_id}}">
+                    <label></label>
+                  </div>
+
+                </td>
+                <td> {{receiver.firstName}} {{receiver.lastName}} </td>
+                <td> {{content}} </td>
+                <td> {{sender.firstName}} {{sender.lastName}} </td>
+                <td>{{formatDate createdAt "list"}}</td>
+              </tr>
+            {{/each}}
+            </tbody>
+            <tfoot class="full-width">
+            <tr>
+              <th></th>
+              <th colspan="4">
+                {{#if editable}}
+                  <button class="ui red submit button" name="delete" value="delete">
+                    Delete
+                  </button>
+                {{#unless admin}}
+                  <button class="ui black submit button" name="delete" value="deleteall">
+                    Delete All
+                  </button>
+                {{/unless}}
+
+                {{/if}}
+              </th>
+            </tr>
+            </tfoot>
+          </table>
+        </form>
+      </article>
+    </div>
   </div>
 </section>
