@@ -1,5 +1,10 @@
 <nav class="ui inverted menu">
   <header class="header item"><a href="/"> Twitter </a></header>
+  <div class="left menu">
+    {{#if admin}}
+      <a id="admin" class= "active red item" href="/admin"> Admin</a>
+    {{/if}}
+  </div>
   <div class="right menu">
     <a id="home"   class= "item" href="/home"> Message</a>
     <a id="report" class= "item" href="/report"> History</a>

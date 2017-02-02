@@ -9,6 +9,11 @@ exports.home = {
   
   handler: function (request, reply) {
     var userEmail = request.auth.credentials.loggedInUser;
+    var admin = false;
+    if (userEmail === 'admin@simpson.com') {
+      admin = true;
+    }
+    
     var array = [];
     User.find({}).then(users => {
       users.forEach(user => {
@@ -27,6 +32,7 @@ exports.home = {
           {
             title: 'Write a message',
             users: array,
+            admin: admin,
           });
     }).catch();
     
@@ -77,7 +83,6 @@ exports.write = {
 exports.report = {
   handler: function (request, reply) {
     var userEmail = request.auth.credentials.loggedInUser;
-    console.log(userEmail);
     var edit = false;
     var admin = false;
     
@@ -176,3 +181,53 @@ exports.delete = {
   
 };
 
+exports.admin = {
+  handler: function (request, reply) {
+    var userEmail = request.auth.credentials.loggedInUser;
+    var array = [];
+    User.find({}).then(users => {
+      users.forEach(user => {
+        if (user.email !== userEmail) {
+          array.push(
+              {
+                _id: user._id,
+                nickName: user.nickName,
+                firstName: user.firstName,
+                lastName: user.lastName,
+              }
+          );
+        }
+      });
+      reply.view('admin',
+          {
+            title: 'Manage users',
+            users: array,
+          });
+    }).catch();
+  },
+  
+};
+
+exports.admindelete = {
+  handler: function (request, reply) {
+    var data = request.payload;
+    var userID = mongoose.Types.ObjectId(data.user);
+    if (data.delete === 'deleteTweet') {
+      
+      Tweet.remove({ sender: userID })
+          .then(res => {
+            reply.redirect('/report');
+          }).catch();
+    } else if (data.delete === 'deleteUser') {
+      Tweet.remove({ sender: userID })
+          .then(res => {
+            User.remove({ _id: userID })
+                .then(res => {
+                  reply.redirect('/report');
+                }).catch();
+          }).catch();
+    }
+            
+  },
+  
+};

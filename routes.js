@@ -18,7 +18,10 @@ module.exports = [
   { method: 'POST', path: '/tweet', config: Twitter.write },
   { method: 'POST', path: '/report', config: Twitter.report },
   { method: 'POST', path: '/delete', config: Twitter.delete },
-
+  
+  { method: 'GET', path: '/admin', config: Twitter.admin },
+  { method: 'POST', path: '/admindelete', config: Twitter.admindelete },
+  
   {
     method: 'GET',
     path: '/{param*}',
