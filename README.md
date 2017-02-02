@@ -2,7 +2,8 @@
 A simple chat application implementing a twitter-like behaviour
 
 ## Heroku
-The app is deployed on https://dry-savannah-58148.herokuapp.com/
+The app is deployed on 
+https://dry-savannah-58148.herokuapp.com/
 
 ## Sources
 * http://mongoosejs.com/docs/api.html#query_Query-populate
