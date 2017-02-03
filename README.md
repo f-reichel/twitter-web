@@ -1,6 +1,17 @@
 # twitter-web
 A simple chat application implementing a twitter-like behaviour
 
+## Default Users
+* admin@simpson.com
+* homer@simpson.com
+* marge@simpson.com
+* bart@simpson.com
+* maggie@simpson.com
+* grandpa@simpson.com
+
+## Default Password
+* secret
+
 ## Heroku
 The app is deployed on 
 https://dry-savannah-58148.herokuapp.com/
