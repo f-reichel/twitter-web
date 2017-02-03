@@ -1,0 +1,111 @@
+{
+  "userService": "http://localhost:4000",
+  "users": [
+    {
+      "firstName": "Admin",
+      "lastName": "Admin",
+      "email": "admin@simpson.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "Maggie",
+      "lastName": "Simpson",
+      "email": "maggie@simpson.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "Grandpa",
+      "lastName": "Simpson",
+      "email": "grandpa@simpson.com",
+      "password": "secret"
+    }
+  ],
+
+  "tweets": [
+    {
+      "sender": "->users.bart",
+      "receiver": "->users.homer",
+      "content": "Hey Dad, can you lend me some money?"
+    },
+    {
+      "sender": "->users.bart",
+      "receiver": "->users.marge",
+      "content": "Hey Mum, I will be late this evening. Don't worry!"
+    },
+    {
+      "sender": "->users.bart",
+      "receiver": "->users.maggie",
+      "content": "I found your teddy bear in my room."
+    },
+    {
+      "sender": "->users.bart",
+      "receiver": "->users.grandpa",
+      "content": "Mum said you mustn't go out when it's dark outside!"
+    },
+    {
+      "sender": "->users.marge",
+      "receiver": "->users.homer",
+      "content": "Can you bring some milk from the supermarket? Thank you!"
+    },
+    {
+      "sender": "->users.marge",
+      "receiver": "->users.bart",
+      "content": "Please do not forget to take the dog to the doctor!"
+    },
+    {
+      "sender": "->users.marge",
+      "receiver": "->users.maggie",
+      "content": "What do you want for lunch?"
+    },
+    {
+      "sender": "->users.homer",
+      "receiver": "->users.grandpa",
+      "content": "Do you want to watch the football match tonight?"
+    },
+    {
+      "sender": "->users.homer",
+      "receiver": "->users.marge",
+      "content": "I love you darling!"
+    },
+    {
+      "sender": "->users.grandpa",
+      "receiver": "->users.homer",
+      "content": "Yes sure, let's meet at Moe's!"
+    },
+    {
+      "sender": "->users.grandpa",
+      "receiver": "->users.homer",
+      "content": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et ma"
+    },
+    {
+      "sender": "->users.maggie",
+      "receiver": "->users.marge",
+      "content": "I'm hungry. Can I have something to eat?"
+    }
+  ],
+
+  "newUser": {
+    "firstName": "Lisa",
+    "lastName": "Simpson",
+    "email": "lisa@simpson.com",
+    "password": "secret"
+  }
+}
